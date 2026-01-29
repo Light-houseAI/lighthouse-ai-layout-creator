@@ -10,7 +10,10 @@ const Header = () => {
             alt="Lighthouse AI" 
             className="w-8 h-8 rounded-full"
           />
-          <span className="text-xl font-semibold text-foreground">
+          <span 
+            className="text-xl font-semibold bg-clip-text text-transparent"
+            style={{ backgroundImage: 'linear-gradient(135deg, hsl(160 35% 50%) 0%, hsl(200 30% 60%) 40%, hsl(260 35% 60%) 100%)' }}
+          >
             Lighthouse AI
           </span>
         </div>
