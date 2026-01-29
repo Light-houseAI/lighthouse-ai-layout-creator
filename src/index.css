@@ -2,106 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Lighthouse AI Design System */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* THERADYME Design System */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* Core Brand Colors */
-    --background: 0 0% 100%;
-    --foreground: 220 26% 14%;
+    /* Core Brand Colors - THERADYME */
+    --background: 30 33% 94%; /* Cream/beige background */
+    --foreground: 15 20% 20%; /* Dark brown text */
 
-    /* Deep Navy - Primary brand dark */
-    --navy: 220 60% 10%;
-    --navy-foreground: 0 0% 100%;
+    /* Coral/Red-Orange - Primary accent */
+    --primary: 10 80% 55%;
+    --primary-foreground: 30 33% 94%;
     
-    /* Teal/Mint Accent */
-    --accent: 168 76% 42%;
-    --accent-foreground: 0 0% 100%;
+    /* Darker text for body */
+    --text-body: 15 15% 30%;
     
-    /* Gradient colors for logo/accents */
-    --mint: 165 60% 75%;
-    --lavender: 260 60% 85%;
+    /* Grid line color */
+    --grid-line: 10 60% 80%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 26% 14%;
+    --card: 30 33% 94%;
+    --card-foreground: 15 20% 20%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 26% 14%;
+    --popover: 30 33% 94%;
+    --popover-foreground: 15 20% 20%;
 
-    --primary: 168 76% 42%;
-    --primary-foreground: 0 0% 100%;
+    --secondary: 30 25% 90%;
+    --secondary-foreground: 15 20% 20%;
 
-    --secondary: 210 20% 96%;
-    --secondary-foreground: 220 26% 14%;
+    --muted: 30 20% 88%;
+    --muted-foreground: 15 10% 45%;
 
-    --muted: 214 20% 94%;
-    --muted-foreground: 215 16% 47%;
+    --accent: 10 80% 55%;
+    --accent-foreground: 30 33% 94%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 20% 90%;
-    --input: 214 20% 90%;
-    --ring: 168 76% 42%;
+    --border: 10 60% 75%;
+    --input: 30 25% 90%;
+    --ring: 10 80% 55%;
 
-    --radius: 0.75rem;
+    --radius: 0rem;
 
-    /* Section backgrounds */
-    --section-light: 210 25% 97%;
-    --section-dark: 220 60% 10%;
-    
-    /* Problem section blue-gray */
-    --problem-bg: 210 15% 55%;
-    --problem-foreground: 0 0% 100%;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 168 76% 42%;
-  }
-
-  .dark {
-    --background: 220 60% 10%;
-    --foreground: 0 0% 98%;
-
-    --card: 220 50% 12%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 220 50% 12%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 168 76% 42%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 220 40% 18%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 220 40% 18%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 168 76% 42%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 220 40% 18%;
-    --input: 220 40% 18%;
-    --ring: 168 76% 42%;
-    
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 168 76% 42%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 168 76% 42%;
+    --sidebar-background: 30 33% 94%;
+    --sidebar-foreground: 15 20% 20%;
+    --sidebar-primary: 10 80% 55%;
+    --sidebar-primary-foreground: 30 33% 94%;
+    --sidebar-accent: 30 25% 90%;
+    --sidebar-accent-foreground: 15 20% 20%;
+    --sidebar-border: 10 60% 75%;
+    --sidebar-ring: 10 80% 55%;
   }
 }
 
@@ -111,54 +62,45 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-bold;
   }
 }
 
 @layer components {
-  /* Gradient backgrounds */
-  .gradient-mint-lavender {
-    background: linear-gradient(135deg, hsl(var(--mint)) 0%, hsl(var(--lavender)) 100%);
-  }
-  
-  .gradient-navy {
-    background: linear-gradient(180deg, hsl(var(--navy)) 0%, hsl(220 55% 8%) 100%);
-  }
-  
-  /* Section backgrounds */
-  .section-navy {
-    @apply bg-navy text-navy-foreground;
-  }
-  
-  .section-problem {
-    @apply bg-problem text-problem-foreground;
-  }
-  
-  .section-light {
-    @apply bg-section-light;
+  /* Grid pattern background */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(var(--grid-line)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--grid-line)) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
   
   /* Button variants */
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-colors rounded-lg px-6 py-3 font-medium;
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors px-6 py-4 font-medium uppercase tracking-wider text-sm;
   }
   
-  .btn-outline-light {
-    @apply border border-white/30 text-white hover:bg-white/10 transition-colors rounded-lg px-6 py-3 font-medium;
+  .btn-outline {
+    @apply border border-primary text-primary hover:bg-primary/10 transition-colors px-6 py-3 font-medium uppercase tracking-wider text-sm;
   }
   
-  /* Card styles */
-  .card-feature {
-    @apply bg-card rounded-2xl p-6 shadow-lg border border-border/50;
+  /* Label styles */
+  .label-tag {
+    @apply uppercase tracking-wider text-xs font-medium text-primary;
   }
   
-  .card-step {
-    @apply bg-white rounded-2xl p-8 shadow-xl;
+  .label-feature {
+    @apply uppercase tracking-[0.2em] text-xs font-semibold text-primary;
+  }
+  
+  .label-step {
+    @apply uppercase tracking-[0.15em] text-sm font-semibold text-primary;
   }
 }
 
@@ -189,5 +131,11 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+  
+  /* Serif italic style */
+  .heading-italic {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
   }
 }
