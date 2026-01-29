@@ -7,19 +7,24 @@
 
 @layer base {
   :root {
-    /* Core Brand Colors - THERADYME */
+    /* Core Brand Colors - Soft Purple Gradient Theme */
     --background: 30 33% 94%; /* Cream/beige background */
     --foreground: 15 20% 20%; /* Dark brown text */
 
-    /* Coral/Red-Orange - Primary accent */
-    --primary: 10 80% 55%;
-    --primary-foreground: 30 33% 94%;
+    /* Soft Purple/Lavender - Primary accent */
+    --primary: 270 50% 75%;
+    --primary-dark: 270 40% 60%;
+    --primary-light: 280 60% 88%;
+    --primary-foreground: 270 30% 20%;
+    
+    /* Gradient definition */
+    --gradient-primary: linear-gradient(135deg, hsl(280 60% 88%) 0%, hsl(270 50% 75%) 50%, hsl(260 40% 70%) 100%);
     
     /* Darker text for body */
     --text-body: 15 15% 30%;
     
     /* Grid line color */
-    --grid-line: 10 60% 80%;
+    --grid-line: 270 30% 80%;
 
     --card: 30 33% 94%;
     --card-foreground: 15 20% 20%;
@@ -33,26 +38,26 @@
     --muted: 30 20% 88%;
     --muted-foreground: 15 10% 45%;
 
-    --accent: 10 80% 55%;
-    --accent-foreground: 30 33% 94%;
+    --accent: 270 50% 75%;
+    --accent-foreground: 270 30% 20%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 10 60% 75%;
+    --border: 270 30% 80%;
     --input: 30 25% 90%;
-    --ring: 10 80% 55%;
+    --ring: 270 50% 75%;
 
-    --radius: 0rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 30 33% 94%;
     --sidebar-foreground: 15 20% 20%;
-    --sidebar-primary: 10 80% 55%;
-    --sidebar-primary-foreground: 30 33% 94%;
+    --sidebar-primary: 270 50% 75%;
+    --sidebar-primary-foreground: 270 30% 20%;
     --sidebar-accent: 30 25% 90%;
     --sidebar-accent-foreground: 15 20% 20%;
-    --sidebar-border: 10 60% 75%;
-    --sidebar-ring: 10 80% 55%;
+    --sidebar-border: 270 30% 80%;
+    --sidebar-ring: 270 50% 75%;
   }
 }
 

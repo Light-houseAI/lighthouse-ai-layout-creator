@@ -30,9 +30,12 @@ const Hero = () => {
           <div className="hidden lg:block relative h-full min-h-[600px]">
             <div className="absolute inset-0 grid-pattern" />
             
-            {/* Coral Circle */}
+            {/* Purple Gradient Circle */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="w-72 h-72 rounded-full bg-primary flex items-center justify-center shadow-2xl">
+              <div 
+                className="w-72 h-72 rounded-full flex items-center justify-center shadow-2xl"
+                style={{ background: 'linear-gradient(135deg, hsl(280 60% 88%) 0%, hsl(270 50% 75%) 50%, hsl(260 40% 70%) 100%)' }}
+              >
                 <div className="text-center text-primary-foreground">
                   <span className="text-4xl font-bold block">100%</span>
                   <span className="text-2xl font-bold block">IRS</span>
