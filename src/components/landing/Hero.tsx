@@ -6,7 +6,7 @@ const Hero = () => {
           {/* Left Content */}
           <div className="py-16">
             <div className="inline-block border border-primary px-3 py-1 mb-8">
-              <span className="label-feature">AI-POWERED AUDIT SHIELD</span>
+              <span className="label-feature">AI-POWERED WORKSPACE</span>
             </div>
             
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary leading-[0.9] mb-8">
