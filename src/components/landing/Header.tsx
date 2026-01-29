@@ -1,10 +1,17 @@
+import lighthouseLogo from "@/assets/lighthouse-logo.png";
+
 const Header = () => {
   return (
     <header className="bg-background py-6 px-6">
       <div className="container mx-auto flex items-center justify-between">
-        <div className="flex items-center">
-          <span className="text-xl font-bold text-primary font-serif tracking-wide">
-            THERADYME®
+        <div className="flex items-center gap-3">
+          <img 
+            src={lighthouseLogo} 
+            alt="Lighthouse AI" 
+            className="w-8 h-8 rounded-full"
+          />
+          <span className="text-xl font-semibold text-foreground">
+            Lighthouse AI
           </span>
         </div>
         
