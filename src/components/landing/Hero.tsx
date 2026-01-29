@@ -1,41 +1,45 @@
-import { Button } from "@/components/ui/button";
-import heroIllustration from "@/assets/hero-illustration.png";
-
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center bg-navy overflow-hidden">
-      {/* Background image */}
-      <div 
-        className="absolute inset-0 opacity-60"
-        style={{
-          backgroundImage: `url(${heroIllustration})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-      
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/80 to-transparent" />
-      
-      <div className="container mx-auto px-6 relative z-10 pt-20">
-        <div className="max-w-2xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy-foreground leading-tight mb-6 animate-fade-in">
-            Master your workflow and scale it
-          </h1>
+    <section className="bg-background min-h-[80vh] relative">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[80vh]">
+          {/* Left Content */}
+          <div className="py-16">
+            <div className="inline-block border border-primary px-3 py-1 mb-8">
+              <span className="label-feature">AI-POWERED AUDIT SHIELD</span>
+            </div>
+            
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary leading-[0.9] mb-8">
+              DIGEST<br />
+              YOUR<br />
+              DATA.
+            </h1>
+            
+            <p className="text-lg text-text-body max-w-md mb-10 leading-relaxed">
+              The Juicy A5 metabolic engine for your corporate taxes. Theradyme 
+              chews through receipts, reconciles the irreconcilable, and spits out 
+              pure compliance.
+            </p>
+            
+            <button className="btn-primary w-full max-w-md">
+              START DIGESTION
+            </button>
+          </div>
           
-          <p className="text-lg md:text-xl text-navy-foreground/80 mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            Lighthouse AI learns how you work by observing your on-screen work in real time. 
-            We optimize your craft and automate the repetitive, manual tasks, while you take 
-            credit for your hard-earned experience.
-          </p>
-          
-          <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <Button 
-              size="lg" 
-              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-8 py-6 text-lg font-medium"
-            >
-              Get started
-            </Button>
+          {/* Right Content - Grid with Circle */}
+          <div className="hidden lg:block relative h-full min-h-[600px]">
+            <div className="absolute inset-0 grid-pattern" />
+            
+            {/* Coral Circle */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="w-72 h-72 rounded-full bg-primary flex items-center justify-center shadow-2xl">
+                <div className="text-center text-primary-foreground">
+                  <span className="text-4xl font-bold block">100%</span>
+                  <span className="text-2xl font-bold block">IRS</span>
+                  <span className="text-2xl font-bold block">PROOF</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

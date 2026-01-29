@@ -1,20 +1,20 @@
+import TopBanner from "@/components/landing/TopBanner";
 import Header from "@/components/landing/Header";
 import Hero from "@/components/landing/Hero";
-import Problems from "@/components/landing/Problems";
-import Solution from "@/components/landing/Solution";
-import HowItWorks from "@/components/landing/HowItWorks";
-import Newsletter from "@/components/landing/Newsletter";
+import Features from "@/components/landing/Features";
+import HowToPrepare from "@/components/landing/HowToPrepare";
+import CTA from "@/components/landing/CTA";
 import Footer from "@/components/landing/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
+      <TopBanner />
       <Header />
       <Hero />
-      <Problems />
-      <Solution />
-      <HowItWorks />
-      <Newsletter />
+      <Features />
+      <HowToPrepare />
+      <CTA />
       <Footer />
     </div>
   );
