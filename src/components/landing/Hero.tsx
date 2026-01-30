@@ -1,4 +1,5 @@
 import WorkflowComparison from './WorkflowComparison';
+import WaitlistForm from './WaitlistForm';
 
 const Hero = () => {
   return (
@@ -23,9 +24,7 @@ const Hero = () => {
               repeatable workflows.
             </p>
             
-            <button className="btn-primary w-full max-w-md">
-              GET EARLY ACCESS
-            </button>
+            <WaitlistForm />
           </div>
           
           {/* Right Content - Workflow Comparison Animation */}
