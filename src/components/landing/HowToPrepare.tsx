@@ -2,14 +2,14 @@ const steps = [
   {
     number: "1",
     label: "CAPTURE",
-    title: "Dump the shoebox.",
-    description: "Upload PDFs, photos of napkins, or raw CSVs. Our AI craves the mess.",
+    title: "Dump the chaos.",
+    description: "Docs, emails, spreadsheets, Slack threads, half-finished thoughts—capture them all in. Lighthouse AI thrives in disorder. Honestly, it's suspiciously good at it.",
   },
   {
     number: "2",
-    label: "SYNTHESIS",
-    title: "Marbling the Assets.",
-    description: "We categorize expenses with the precision of a molecular gastronomist.",
+    label: "SYNTHESIZE",
+    title: "Make sense of the mess. Then make it faster.",
+    description: "Lighthouse AI finds what's slowing you down recommends cutting excess steps using industry-wide best practices, and applies AI where it actually adds value. The boring parts get automated. The important work moves faster.",
   },
 ];
 
