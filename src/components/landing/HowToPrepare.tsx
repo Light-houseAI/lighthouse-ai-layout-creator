@@ -29,9 +29,7 @@ const HowToPrepare = () => {
           {/* Right Column - Steps */}
           <div className="space-y-4">
             <p className="text-text-body leading-relaxed mb-12">
-              While there are many ways to prepare tax returns, we'll focus on the most 
-              basic standard "upload & relax" routine. Stress is optional. So is jail, but 
-              who are we kidding here?
+              There are countless ways to work. Ours starts with dumping the chaos and letting AI handle the rest.
             </p>
             
             {steps.map((step, index) => (
