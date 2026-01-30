@@ -1,7 +1,7 @@
 const steps = [
   {
     number: "1",
-    label: "UPLOAD",
+    label: "CAPTURE",
     title: "Dump the shoebox.",
     description: "Upload PDFs, photos of napkins, or raw CSVs. Our AI craves the mess.",
   },
