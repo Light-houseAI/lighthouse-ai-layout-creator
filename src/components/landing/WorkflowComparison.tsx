@@ -7,22 +7,51 @@ interface Pill {
   processing: boolean;
 }
 
-const WorkflowComparison = () => {
-  const [leftPills, setLeftPills] = useState<Pill[]>([
-    { id: 1, label: 'Inbox Review', active: false, processing: false },
-    { id: 2, label: 'Manual Entry', active: false, processing: false },
-    { id: 3, label: 'Verification', active: false, processing: false },
-    { id: 4, label: 'Approval Queue', active: false, processing: false },
-    { id: 5, label: 'Data Export', active: false, processing: false },
-    { id: 6, label: 'Report Generation', active: false, processing: false },
-  ]);
+interface PersonaConfig {
+  title: string;
+  subtitle: string;
+  orchestrationLabel: string;
+  pills: string[];
+}
 
+const personas: PersonaConfig[] = [
+  {
+    title: 'Product Manager',
+    subtitle: 'Manual Prioritization Required',
+    orchestrationLabel: 'Roadmap Optimized',
+    pills: ['Backlog Review', 'Stakeholder Input', 'Priority Scoring', 'Sprint Planning', 'Resource Allocation', 'Timeline Sync'],
+  },
+  {
+    title: 'Software Engineer',
+    subtitle: 'Manual Debugging Required',
+    orchestrationLabel: 'Code Deployed',
+    pills: ['Bug Triage', 'Code Review', 'Unit Testing', 'CI/CD Pipeline', 'Deployment', 'Monitoring Setup'],
+  },
+  {
+    title: 'Founder',
+    subtitle: 'Manual Oversight Required',
+    orchestrationLabel: 'Business Scaled',
+    pills: ['Investor Updates', 'Metric Tracking', 'Team Sync', 'Budget Review', 'Strategy Pivot', 'Growth Analysis'],
+  },
+];
+
+const WorkflowComparison = () => {
+  const [currentPersona, setCurrentPersona] = useState(0);
+  const [leftPills, setLeftPills] = useState<Pill[]>([]);
   const [leftTimer, setLeftTimer] = useState(0);
   const [rightTimer, setRightTimer] = useState(0);
   const [systemOptimized, setSystemOptimized] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
-  const animationRef = useRef<NodeJS.Timeout | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const initializePills = (personaIndex: number) => {
+    return personas[personaIndex].pills.map((label, index) => ({
+      id: index + 1,
+      label,
+      active: false,
+      processing: false,
+    }));
+  };
 
   const formatTime = (seconds: number) => {
     const hrs = Math.floor(seconds / 3600);
@@ -31,14 +60,15 @@ const WorkflowComparison = () => {
     return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const runAnimation = () => {
+  const runAnimation = (personaIndex: number) => {
     if (isRunning) return;
     
+    const pills = initializePills(personaIndex);
+    setLeftPills(pills);
     setIsRunning(true);
     setLeftTimer(0);
     setRightTimer(0);
     setSystemOptimized(false);
-    setLeftPills(pills => pills.map(p => ({ ...p, active: false, processing: false })));
 
     // Start left timer
     timerRef.current = setInterval(() => {
@@ -46,18 +76,18 @@ const WorkflowComparison = () => {
     }, 100);
 
     // Animate left pills one by one (slow)
-    leftPills.forEach((_, index) => {
+    pills.forEach((_, index) => {
       setTimeout(() => {
-        setLeftPills(pills => 
-          pills.map((p, i) => 
+        setLeftPills(currentPills => 
+          currentPills.map((p, i) => 
             i === index ? { ...p, processing: true } : p
           )
         );
       }, index * 800);
 
       setTimeout(() => {
-        setLeftPills(pills => 
-          pills.map((p, i) => 
+        setLeftPills(currentPills => 
+          currentPills.map((p, i) => 
             i === index ? { ...p, processing: false, active: true } : p
           )
         );
@@ -65,7 +95,7 @@ const WorkflowComparison = () => {
     });
 
     // After left side completes, start right side
-    const leftDuration = leftPills.length * 800 + 600;
+    const leftDuration = pills.length * 800 + 600;
     
     setTimeout(() => {
       // Stop left timer, start right timer
@@ -81,26 +111,30 @@ const WorkflowComparison = () => {
         setSystemOptimized(true);
         setIsRunning(false);
         
-        // Reset after delay and restart
+        // Move to next persona and restart
         setTimeout(() => {
-          setLeftPills(pills => pills.map(p => ({ ...p, active: false, processing: false })));
+          const nextPersona = (personaIndex + 1) % personas.length;
+          setCurrentPersona(nextPersona);
+          setLeftPills(initializePills(nextPersona).map(p => ({ ...p, active: false, processing: false })));
           setLeftTimer(0);
           setRightTimer(0);
           setSystemOptimized(false);
-          runAnimation();
+          runAnimation(nextPersona);
         }, 3000);
       }, 800);
     }, leftDuration);
   };
 
   useEffect(() => {
-    const timeout = setTimeout(runAnimation, 1000);
+    setLeftPills(initializePills(0));
+    const timeout = setTimeout(() => runAnimation(0), 1000);
     return () => {
       clearTimeout(timeout);
-      if (animationRef.current) clearTimeout(animationRef.current);
       if (timerRef.current) clearInterval(timerRef.current);
     };
   }, []);
+
+  const persona = personas[currentPersona];
 
   return (
     <div className="w-full h-full min-h-[400px] border border-border rounded-lg overflow-hidden bg-foreground text-background flex flex-col">
@@ -110,8 +144,8 @@ const WorkflowComparison = () => {
         <div className="p-4 flex flex-col border-r border-background/20">
           <div className="flex justify-between items-start mb-4">
             <div>
-              <h3 className="text-sm font-medium">Legacy Workflow</h3>
-              <p className="text-xs opacity-60">Manual Intervention Required</p>
+              <h3 className="text-sm font-medium">{persona.title}</h3>
+              <p className="text-xs opacity-60">{persona.subtitle}</p>
             </div>
             <span className="text-xs border border-background/40 rounded-full px-2 py-0.5 font-mono">
               {formatTime(leftTimer)}
@@ -196,11 +230,34 @@ const WorkflowComparison = () => {
                   }
                 `}
               >
-                System Optimized
+                {persona.orchestrationLabel}
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Carousel Dots */}
+      <div className="flex justify-center gap-2 py-3 border-t border-background/20">
+        {personas.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => {
+              if (!isRunning) {
+                setCurrentPersona(index);
+                runAnimation(index);
+              }
+            }}
+            className={`
+              w-2 h-2 rounded-full transition-all duration-300
+              ${index === currentPersona 
+                ? 'bg-background w-6' 
+                : 'bg-background/40 hover:bg-background/60'
+              }
+            `}
+            aria-label={`View ${personas[index].title} workflow`}
+          />
+        ))}
       </div>
 
       <style>{`
