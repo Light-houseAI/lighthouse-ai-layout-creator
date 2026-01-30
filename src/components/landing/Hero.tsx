@@ -24,7 +24,7 @@ const Hero = () => {
             </p>
             
             <button className="btn-primary w-full max-w-md">
-              START DIGESTION
+              GET EARLY ACCESS
             </button>
           </div>
           
