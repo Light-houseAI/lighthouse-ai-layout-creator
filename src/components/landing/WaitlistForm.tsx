@@ -20,10 +20,10 @@ const WaitlistForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email || !jobRole) {
+    if (!email) {
       toast({
         title: "Missing information",
-        description: "Please fill in both your email and job role.",
+        description: "Please enter your email address.",
         variant: "destructive"
       });
       return;
@@ -44,7 +44,7 @@ const WaitlistForm = () => {
 
     const { error } = await supabase
       .from('waitlist')
-      .insert({ email: email.trim().toLowerCase(), job_role: jobRole });
+      .insert({ email: email.trim().toLowerCase(), job_role: jobRole || null });
 
     setIsSubmitting(false);
 
