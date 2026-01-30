@@ -12,15 +12,15 @@ const Hero = () => {
             </div>
             
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary leading-[0.9] mb-8">
-              DIGEST<br />
-              YOUR<br />
-              DATA.
+              MAKE<br />
+              WORK<br />
+              FLOW.
             </h1>
             
             <p className="text-lg text-text-body max-w-md mb-10 leading-relaxed">
-              The Juicy A5 metabolic engine for your corporate taxes. Theradyme 
-              chews through receipts, reconciles the irreconcilable, and spits out 
-              pure compliance.
+              Lighthouse AI analyzes how work gets done, removes friction, and 
+              automates low-value tasks—turning scattered processes into clear, 
+              repeatable workflows.
             </p>
             
             <button className="btn-primary w-full max-w-md">
