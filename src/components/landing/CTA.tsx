@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 const CTA = () => {
-  const [companyName, setCompanyName] = useState("");
+  const [jobProfile, setJobProfile] = useState("");
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitted:", { companyName, email });
+    console.log("Submitted:", { jobProfile, email });
     // Handle form submission
   };
 
@@ -31,21 +31,21 @@ const CTA = () => {
           <div className="lg:border-l border-border lg:pl-16">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="label-feature block mb-3">COMPANY NAME</label>
+                <label className="label-feature block mb-3">YOUR JOB PROFILE</label>
                 <input
                   type="text"
-                  placeholder="e.g. Juicy Ventures Inc."
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
+                  placeholder="e.g. Product Manager, Founder, Engineer"
+                  value={jobProfile}
+                  onChange={(e) => setJobProfile(e.target.value)}
                   className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
                 />
               </div>
               
               <div>
-                <label className="label-feature block mb-3">WORK EMAIL</label>
+                <label className="label-feature block mb-3">YOUR EMAIL</label>
                 <input
                   type="email"
-                  placeholder="finance@company.com"
+                  placeholder="you@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
