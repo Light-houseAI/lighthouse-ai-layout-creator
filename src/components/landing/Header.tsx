@@ -8,14 +8,14 @@ const Header = () => {
         <div className="flex items-center gap-2">
           <img 
             src={lighthouseLogo} 
-            alt="Lighthouse AI" 
+            alt="Krama" 
             className="w-6 h-6 rounded-full"
           />
           <span 
             className="text-lg font-semibold bg-clip-text text-transparent"
             style={{ backgroundImage: 'linear-gradient(135deg, hsl(160 35% 50%) 0%, hsl(200 30% 60%) 40%, hsl(260 35% 60%) 100%)' }}
           >
-            Lighthouse
+            Krama
           </span>
         </div>
 

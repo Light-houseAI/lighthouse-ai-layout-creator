@@ -18,11 +18,11 @@ const Footer = () => {
             <div className="flex items-center gap-3">
               <img 
                 src={lighthouseLogo} 
-                alt="Lighthouse AI" 
+                alt="Krama" 
                 className="w-8 h-8 rounded-full"
               />
               <span className="text-lg font-semibold text-navy-foreground">
-                Lighthouse AI
+                Krama
               </span>
             </div>
             <p className="text-sm text-navy-foreground/60">
@@ -32,7 +32,6 @@ const Footer = () => {
           
           {/* Social links */}
           <div className="flex items-center gap-2">
-            <span className="text-sm text-navy-foreground/80 mr-2">Connect with us</span>
             {socialLinks.map((social, index) => (
               <a
                 key={index}
@@ -43,16 +42,6 @@ const Footer = () => {
                 <social.icon className="w-5 h-5" />
               </a>
             ))}
-          </div>
-          
-          {/* Legal links */}
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-navy-foreground/60 hover:text-navy-foreground transition-colors">
-              Terms of use
-            </a>
-            <a href="#" className="text-sm text-navy-foreground/60 hover:text-navy-foreground transition-colors">
-              Privacy policy
-            </a>
           </div>
         </div>
       </div>
