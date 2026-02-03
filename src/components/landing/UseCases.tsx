@@ -185,6 +185,19 @@ const UseCases = () => {
   const [visibleIcons, setVisibleIcons] = useState<number[]>([]);
   const activeData = useCases.find((uc) => uc.id === activeCase)!;
 
+  // Auto-advance through tabs
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveCase(current => {
+        const currentIndex = useCases.findIndex(uc => uc.id === current);
+        const nextIndex = (currentIndex + 1) % useCases.length;
+        return useCases[nextIndex].id;
+      });
+    }, 5000); // Switch every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   // Animation sequence - only runs for Capture tab
   useEffect(() => {
     // Only run animation for Capture tab
@@ -202,12 +215,12 @@ const UseCases = () => {
       // Start click animation after delay
       const clickTimeout = setTimeout(() => {
         setAnimationPhase('clicking');
-      }, 1000);
+      }, 500);
 
       // Click complete
       const clickedTimeout = setTimeout(() => {
         setAnimationPhase('clicked');
-      }, 1500);
+      }, 1000);
 
       // Start revealing icons
       const revealTimeout = setTimeout(() => {
@@ -217,9 +230,9 @@ const UseCases = () => {
         toolIcons.forEach((_, index) => {
           setTimeout(() => {
             setVisibleIcons(prev => [...prev, index]);
-          }, index * 80);
+          }, index * 60);
         });
-      }, 1800);
+      }, 1300);
 
       return () => {
         clearTimeout(clickTimeout);
@@ -229,13 +242,6 @@ const UseCases = () => {
     };
 
     runAnimation();
-    
-    // Restart animation every 8 seconds
-    const interval = setInterval(() => {
-      runAnimation();
-    }, 8000);
-
-    return () => clearInterval(interval);
   }, [activeCase]);
 
   return (
