@@ -286,9 +286,9 @@ const WorkflowComparison = () => {
                 <div className="w-5 h-5 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center">
                   <Sparkles className="w-2.5 h-2.5 text-primary" />
                 </div>
-                <h3 className="text-xs font-medium">AI Agent</h3>
+                <h3 className="text-xs font-medium">Krama</h3>
               </div>
-              <p className="text-[10px] opacity-60 mt-0.5">Autonomous Execution</p>
+              <p className="text-[10px] opacity-60 mt-0.5">Smart Workflow</p>
             </div>
             <span className="text-[10px] border border-background/40 rounded-full px-1.5 py-0.5 font-mono">
               {formatTime(rightTimer)}
