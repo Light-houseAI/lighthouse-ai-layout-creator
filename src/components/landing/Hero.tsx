@@ -19,9 +19,7 @@ const Hero = () => {
             </h1>
             
             <p className="text-lg text-text-body max-w-md mb-10 leading-relaxed">
-              Lighthouse AI analyzes how work gets done, removes friction, and 
-              automates low-value tasks—turning scattered processes into clear, 
-              repeatable workflows.
+              Insights that help you spot inefficiencies, automate busywork, and do your best work—every time.
             </p>
             
             <WaitlistForm />
