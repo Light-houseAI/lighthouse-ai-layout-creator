@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Keyboard, Bot, Package, Check, Sparkles } from 'lucide-react';
+import { MessageSquare, FileText, GitPullRequest, Check, Sparkles } from 'lucide-react';
 
 interface OptimizeAnimationProps {
   isActive: boolean;
@@ -7,19 +7,22 @@ interface OptimizeAnimationProps {
 
 const recommendations = [
   {
-    icon: Keyboard,
-    title: "Keyboard shortcuts",
-    subtitle: "Use Cmd+K for quick actions",
+    icon: MessageSquare,
+    title: "Slack → Email → Slack loops",
+    subtitle: "Set async response windows to reduce context switches",
+    tools: ["Slack", "Gmail"],
   },
   {
-    icon: Bot,
-    title: "Automate email sorting",
-    subtitle: "Auto-categorize based on patterns",
+    icon: FileText,
+    title: "Notion doc creation: 8 min avg",
+    subtitle: "Use templates to cut setup time by 60%",
+    tools: ["Notion"],
   },
   {
-    icon: Package,
-    title: "Batch similar tasks",
-    subtitle: "Group related work for efficiency",
+    icon: GitPullRequest,
+    title: "GitHub PR reviews delayed 4+ hrs",
+    subtitle: "Enable priority notifications for faster turnaround",
+    tools: ["GitHub"],
   },
 ];
 
