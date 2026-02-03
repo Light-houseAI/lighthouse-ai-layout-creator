@@ -30,28 +30,33 @@ const ExecuteAnimation = ({ isActive }: ExecuteAnimationProps) => {
     setAutomatedTasks([]);
     setCheckedTasks([]);
 
-    // Scene 2: Start automation at 3s (each task 0.8s apart)
+    // Compressed timing to fit 5-second tab cycle:
+    // Scene 1 (0-0.8s): Manual tasks visible
+    // Scene 2 (0.8-3s): Automation (4 tasks, 0.4s apart)
+    // Scene 3 (3-4s): Running automatically
+    // Scene 4 (4-5s): Keep improving
+
     const automateTimers = tasks.map((task, index) => {
       return setTimeout(() => {
         setPhase('automating');
         setAutomatedTasks(prev => [...prev, task.id]);
         
-        // Check the task 0.3s after it turns green
+        // Check the task 0.2s after it turns green
         setTimeout(() => {
           setCheckedTasks(prev => [...prev, task.id]);
-        }, 300);
-      }, 3000 + (index * 800));
+        }, 200);
+      }, 800 + (index * 400));
     });
 
-    // Scene 3: Running automatically at 7s
+    // Scene 3: Running automatically at 3s
     const runningTimer = setTimeout(() => {
       setPhase('running');
-    }, 7000);
+    }, 3000);
 
-    // Scene 4: Keep improving at 9s
+    // Scene 4: Keep improving at 4s
     const improvingTimer = setTimeout(() => {
       setPhase('improving');
-    }, 9000);
+    }, 4000);
 
     return () => {
       automateTimers.forEach(timer => clearTimeout(timer));
