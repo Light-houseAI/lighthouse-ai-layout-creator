@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Layers } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Layers, MousePointer2 } from "lucide-react";
+import lighthouseLogo from "@/assets/lighthouse-logo.png";
 
 const useCases = [
   {
@@ -180,7 +181,55 @@ const IconSvg = ({ icon, color }: { icon: string; color: string }) => {
 
 const UseCases = () => {
   const [activeCase, setActiveCase] = useState(useCases[0].id);
+  const [animationPhase, setAnimationPhase] = useState<'idle' | 'clicking' | 'clicked' | 'revealing'>('idle');
+  const [visibleIcons, setVisibleIcons] = useState<number[]>([]);
   const activeData = useCases.find((uc) => uc.id === activeCase)!;
+
+  // Animation sequence
+  useEffect(() => {
+    const runAnimation = () => {
+      // Reset
+      setAnimationPhase('idle');
+      setVisibleIcons([]);
+      
+      // Start click animation after delay
+      const clickTimeout = setTimeout(() => {
+        setAnimationPhase('clicking');
+      }, 1000);
+
+      // Click complete
+      const clickedTimeout = setTimeout(() => {
+        setAnimationPhase('clicked');
+      }, 1500);
+
+      // Start revealing icons
+      const revealTimeout = setTimeout(() => {
+        setAnimationPhase('revealing');
+        
+        // Stagger reveal icons
+        toolIcons.forEach((_, index) => {
+          setTimeout(() => {
+            setVisibleIcons(prev => [...prev, index]);
+          }, index * 80);
+        });
+      }, 1800);
+
+      return () => {
+        clearTimeout(clickTimeout);
+        clearTimeout(clickedTimeout);
+        clearTimeout(revealTimeout);
+      };
+    };
+
+    runAnimation();
+    
+    // Restart animation every 8 seconds
+    const interval = setInterval(() => {
+      runAnimation();
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="bg-background py-20 px-6">
@@ -231,8 +280,82 @@ const UseCases = () => {
             </div>
           </div>
 
-          {/* Right Column - Floating Icons Cloud */}
+          {/* Right Column - Floating Icons Cloud with Animation */}
           <div className="relative min-h-[450px] hidden lg:block">
+            {/* Lighthouse App Mockup at top */}
+            <div 
+              className={`absolute top-0 left-1/2 -translate-x-1/2 z-20 transition-all duration-500 ${
+                animationPhase === 'revealing' ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
+              }`}
+            >
+              <div className="bg-card border border-border rounded-xl shadow-lg p-4 min-w-[280px]">
+                {/* App header */}
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <img src={lighthouseLogo} alt="Lighthouse" className="w-6 h-6" />
+                    <span className="text-sm font-medium text-primary">Lighthouse AI</span>
+                  </div>
+                  <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center">
+                    <span className="text-[10px]">👤</span>
+                  </div>
+                </div>
+                
+                {/* Session info */}
+                <div className="flex items-center justify-between text-xs text-text-body mb-3">
+                  <span>My tracks</span>
+                  <div className="flex items-center gap-2">
+                    <span>Capture a</span>
+                    <span className="font-medium text-primary">25 min</span>
+                    <span>session</span>
+                  </div>
+                </div>
+                
+                {/* Track item */}
+                <div className="flex items-center justify-between bg-muted/50 rounded-lg p-3 relative">
+                  <div>
+                    <p className="text-sm font-medium text-primary">Lighthouse</p>
+                    <p className="text-xs text-text-body">
+                      Last worked: 1 hour ago • <span className="text-accent">2 sessions to review</span>
+                    </p>
+                  </div>
+                  
+                  {/* Start session button with click animation */}
+                  <div className="relative">
+                    <button 
+                      className={`bg-primary text-primary-foreground text-xs px-4 py-2 rounded-md font-medium flex items-center gap-1 transition-all duration-200 ${
+                        animationPhase === 'clicking' ? 'scale-95 bg-primary/80' : ''
+                      } ${animationPhase === 'clicked' ? 'bg-accent' : ''}`}
+                    >
+                      Start session
+                      <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none">
+                        <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                      </svg>
+                    </button>
+                    
+                    {/* Animated cursor */}
+                    <div 
+                      className={`absolute transition-all duration-500 ${
+                        animationPhase === 'idle' 
+                          ? 'bottom-[-30px] right-[-20px] opacity-0' 
+                          : animationPhase === 'clicking' 
+                            ? 'bottom-[8px] right-[40px] opacity-100 scale-90' 
+                            : animationPhase === 'clicked'
+                              ? 'bottom-[8px] right-[40px] opacity-100'
+                              : 'bottom-[20px] right-[60px] opacity-0'
+                      }`}
+                    >
+                      <MousePointer2 
+                        className={`w-5 h-5 text-primary fill-primary/20 transition-transform ${
+                          animationPhase === 'clicking' ? 'rotate-[-10deg]' : ''
+                        }`} 
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Icons Cloud */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative w-full h-full">
                 {toolIcons.map((tool, index) => {
@@ -268,11 +391,17 @@ const UseCases = () => {
                     lg: "w-14 h-14",
                   };
                   const sizeClass = sizeClasses[tool.size as keyof typeof sizeClasses] || sizeClasses.md;
+                  
+                  const isVisible = visibleIcons.includes(index);
 
                   return (
                     <div
                       key={tool.name}
-                      className={`absolute ${sizeClass} bg-card rounded-xl shadow-sm border border-border flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:-translate-y-1`}
+                      className={`absolute ${sizeClass} bg-card rounded-xl shadow-sm border border-border flex items-center justify-center transition-all duration-500 hover:scale-110 hover:shadow-lg hover:-translate-y-1 ${
+                        isVisible 
+                          ? 'opacity-100 scale-100 translate-y-0' 
+                          : 'opacity-0 scale-75 translate-y-4'
+                      }`}
                       style={{
                         top: pos.top,
                         left: pos.left,
