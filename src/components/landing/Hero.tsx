@@ -12,10 +12,9 @@ const Hero = () => {
               <span className="label-feature">AI-POWERED WORKSPACE</span>
             </div>
             
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary leading-[0.9] mb-8">
-              UNLOCK<br />
-              YOUR<br />
-              BEST.
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary leading-[1] mb-8">
+              Your workflow,<br />
+              understood.
             </h1>
             
             <p className="text-lg text-text-body max-w-md mb-10 leading-relaxed">
