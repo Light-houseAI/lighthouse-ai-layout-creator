@@ -185,8 +185,15 @@ const UseCases = () => {
   const [visibleIcons, setVisibleIcons] = useState<number[]>([]);
   const activeData = useCases.find((uc) => uc.id === activeCase)!;
 
-  // Animation sequence
+  // Animation sequence - only runs for Capture tab
   useEffect(() => {
+    // Only run animation for Capture tab
+    if (activeCase !== 'capture') {
+      setAnimationPhase('idle');
+      setVisibleIcons([]);
+      return;
+    }
+
     const runAnimation = () => {
       // Reset
       setAnimationPhase('idle');
@@ -229,7 +236,7 @@ const UseCases = () => {
     }, 8000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [activeCase]);
 
   return (
     <section className="bg-background py-20 px-6">
@@ -280,140 +287,154 @@ const UseCases = () => {
             </div>
           </div>
 
-          {/* Right Column - Floating Icons Cloud with Animation */}
+          {/* Right Column - Content based on active tab */}
           <div className="relative min-h-[450px] hidden lg:block">
-            {/* Lighthouse App Mockup at top */}
-            <div 
-              className={`absolute top-0 left-1/2 -translate-x-1/2 z-20 transition-all duration-500 ${
-                animationPhase === 'revealing' ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
-              }`}
-            >
-              <div className="bg-card border border-border rounded-xl shadow-lg p-4 min-w-[280px]">
-                {/* App header */}
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <img src={lighthouseLogo} alt="Lighthouse" className="w-6 h-6" />
-                    <span className="text-sm font-medium text-primary">Lighthouse AI</span>
-                  </div>
-                  <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center">
-                    <span className="text-[10px]">👤</span>
-                  </div>
-                </div>
-                
-                {/* Session info */}
-                <div className="flex items-center justify-between text-xs text-text-body mb-3">
-                  <span>My tracks</span>
-                  <div className="flex items-center gap-2">
-                    <span>Capture a</span>
-                    <span className="font-medium text-primary">25 min</span>
-                    <span>session</span>
-                  </div>
-                </div>
-                
-                {/* Track item */}
-                <div className="flex items-center justify-between bg-muted/50 rounded-lg p-3 relative">
-                  <div>
-                    <p className="text-sm font-medium text-primary">Lighthouse</p>
-                    <p className="text-xs text-text-body">
-                      Last worked: 1 hour ago • <span className="text-accent">2 sessions to review</span>
-                    </p>
-                  </div>
-                  
-                  {/* Start session button with click animation */}
-                  <div className="relative">
-                    <button 
-                      className={`bg-primary text-primary-foreground text-xs px-4 py-2 rounded-md font-medium flex items-center gap-1 transition-all duration-200 ${
-                        animationPhase === 'clicking' ? 'scale-95 bg-primary/80' : ''
-                      } ${animationPhase === 'clicked' ? 'bg-accent' : ''}`}
-                    >
-                      Start session
-                      <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none">
-                        <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                      </svg>
-                    </button>
+            {activeCase === 'capture' ? (
+              <>
+                {/* Lighthouse App Mockup at top */}
+                <div 
+                  className={`absolute top-0 left-1/2 -translate-x-1/2 z-20 transition-all duration-500 ${
+                    animationPhase === 'revealing' ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
+                  }`}
+                >
+                  <div className="bg-card border border-border rounded-xl shadow-lg p-4 min-w-[280px]">
+                    {/* App header */}
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <img src={lighthouseLogo} alt="Lighthouse" className="w-6 h-6" />
+                        <span className="text-sm font-medium text-primary">Lighthouse AI</span>
+                      </div>
+                      <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center">
+                        <span className="text-[10px]">👤</span>
+                      </div>
+                    </div>
                     
-                    {/* Animated cursor */}
-                    <div 
-                      className={`absolute transition-all duration-500 ${
-                        animationPhase === 'idle' 
-                          ? 'bottom-[-30px] right-[-20px] opacity-0' 
-                          : animationPhase === 'clicking' 
-                            ? 'bottom-[8px] right-[40px] opacity-100 scale-90' 
-                            : animationPhase === 'clicked'
-                              ? 'bottom-[8px] right-[40px] opacity-100'
-                              : 'bottom-[20px] right-[60px] opacity-0'
-                      }`}
-                    >
-                      <MousePointer2 
-                        className={`w-5 h-5 text-primary fill-primary/20 transition-transform ${
-                          animationPhase === 'clicking' ? 'rotate-[-10deg]' : ''
-                        }`} 
-                      />
+                    {/* Session info */}
+                    <div className="flex items-center justify-between text-xs text-text-body mb-3">
+                      <span>My tracks</span>
+                      <div className="flex items-center gap-2">
+                        <span>Capture a</span>
+                        <span className="font-medium text-primary">25 min</span>
+                        <span>session</span>
+                      </div>
+                    </div>
+                    
+                    {/* Track item */}
+                    <div className="flex items-center justify-between bg-muted/50 rounded-lg p-3 relative">
+                      <div>
+                        <p className="text-sm font-medium text-primary">Lighthouse</p>
+                        <p className="text-xs text-text-body">
+                          Last worked: 1 hour ago • <span className="text-accent">2 sessions to review</span>
+                        </p>
+                      </div>
+                      
+                      {/* Start session button with click animation */}
+                      <div className="relative">
+                        <button 
+                          className={`bg-primary text-primary-foreground text-xs px-4 py-2 rounded-md font-medium flex items-center gap-1 transition-all duration-200 ${
+                            animationPhase === 'clicking' ? 'scale-95 bg-primary/80' : ''
+                          } ${animationPhase === 'clicked' ? 'bg-accent' : ''}`}
+                        >
+                          Start session
+                          <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none">
+                            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                          </svg>
+                        </button>
+                        
+                        {/* Animated cursor */}
+                        <div 
+                          className={`absolute transition-all duration-500 ${
+                            animationPhase === 'idle' 
+                              ? 'bottom-[-30px] right-[-20px] opacity-0' 
+                              : animationPhase === 'clicking' 
+                                ? 'bottom-[8px] right-[40px] opacity-100 scale-90' 
+                                : animationPhase === 'clicked'
+                                  ? 'bottom-[8px] right-[40px] opacity-100'
+                                  : 'bottom-[20px] right-[60px] opacity-0'
+                          }`}
+                        >
+                          <MousePointer2 
+                            className={`w-5 h-5 text-primary fill-primary/20 transition-transform ${
+                              animationPhase === 'clicking' ? 'rotate-[-10deg]' : ''
+                            }`} 
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Floating Icons Cloud */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-full h-full">
-                {toolIcons.map((tool, index) => {
-                  // Create a more scattered, organic layout like the reference
-                  const positions = [
-                    { top: "2%", left: "25%" },
-                    { top: "5%", left: "55%" },
-                    { top: "8%", left: "78%" },
-                    { top: "12%", left: "8%" },
-                    { top: "18%", left: "38%" },
-                    { top: "15%", left: "65%" },
-                    { top: "25%", left: "18%" },
-                    { top: "28%", left: "48%" },
-                    { top: "22%", left: "82%" },
-                    { top: "38%", left: "5%" },
-                    { top: "35%", left: "30%" },
-                    { top: "40%", left: "58%" },
-                    { top: "42%", left: "85%" },
-                    { top: "52%", left: "15%" },
-                    { top: "55%", left: "42%" },
-                    { top: "50%", left: "72%" },
-                    { top: "65%", left: "28%" },
-                    { top: "68%", left: "55%" },
-                    { top: "72%", left: "80%" },
-                    { top: "78%", left: "10%" },
-                  ];
-                  const pos = positions[index % positions.length];
-                  
-                  // Vary sizes based on tool.size
-                  const sizeClasses = {
-                    sm: "w-10 h-10",
-                    md: "w-12 h-12",
-                    lg: "w-14 h-14",
-                  };
-                  const sizeClass = sizeClasses[tool.size as keyof typeof sizeClasses] || sizeClasses.md;
-                  
-                  const isVisible = visibleIcons.includes(index);
+                {/* Floating Icons Cloud */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-full h-full">
+                    {toolIcons.map((tool, index) => {
+                      // Create a more scattered, organic layout like the reference
+                      const positions = [
+                        { top: "2%", left: "25%" },
+                        { top: "5%", left: "55%" },
+                        { top: "8%", left: "78%" },
+                        { top: "12%", left: "8%" },
+                        { top: "18%", left: "38%" },
+                        { top: "15%", left: "65%" },
+                        { top: "25%", left: "18%" },
+                        { top: "28%", left: "48%" },
+                        { top: "22%", left: "82%" },
+                        { top: "38%", left: "5%" },
+                        { top: "35%", left: "30%" },
+                        { top: "40%", left: "58%" },
+                        { top: "42%", left: "85%" },
+                        { top: "52%", left: "15%" },
+                        { top: "55%", left: "42%" },
+                        { top: "50%", left: "72%" },
+                        { top: "65%", left: "28%" },
+                        { top: "68%", left: "55%" },
+                        { top: "72%", left: "80%" },
+                        { top: "78%", left: "10%" },
+                      ];
+                      const pos = positions[index % positions.length];
+                      
+                      // Vary sizes based on tool.size
+                      const sizeClasses = {
+                        sm: "w-10 h-10",
+                        md: "w-12 h-12",
+                        lg: "w-14 h-14",
+                      };
+                      const sizeClass = sizeClasses[tool.size as keyof typeof sizeClasses] || sizeClasses.md;
+                      
+                      const isVisible = visibleIcons.includes(index);
 
-                  return (
-                    <div
-                      key={tool.name}
-                      className={`absolute ${sizeClass} bg-card rounded-xl shadow-sm border border-border flex items-center justify-center transition-all duration-500 hover:scale-110 hover:shadow-lg hover:-translate-y-1 ${
-                        isVisible 
-                          ? 'opacity-100 scale-100 translate-y-0' 
-                          : 'opacity-0 scale-75 translate-y-4'
-                      }`}
-                      style={{
-                        top: pos.top,
-                        left: pos.left,
-                      }}
-                      title={tool.name}
-                    >
-                      <IconSvg icon={tool.icon} color={tool.color} />
-                    </div>
-                  );
-                })}
+                      return (
+                        <div
+                          key={tool.name}
+                          className={`absolute ${sizeClass} bg-card rounded-xl shadow-sm border border-border flex items-center justify-center transition-all duration-500 hover:scale-110 hover:shadow-lg hover:-translate-y-1 ${
+                            isVisible 
+                              ? 'opacity-100 scale-100 translate-y-0' 
+                              : 'opacity-0 scale-75 translate-y-4'
+                          }`}
+                          style={{
+                            top: pos.top,
+                            left: pos.left,
+                          }}
+                          title={tool.name}
+                        >
+                          <IconSvg icon={tool.icon} color={tool.color} />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </>
+            ) : (
+              /* Placeholder for other tabs */
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-muted-foreground">
+                  <div className="w-24 h-24 mx-auto mb-4 rounded-2xl bg-muted/50 flex items-center justify-center">
+                    <Layers className="w-10 h-10 text-muted-foreground/50" />
+                  </div>
+                  <p className="text-sm">{activeData.headline} visualization</p>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
