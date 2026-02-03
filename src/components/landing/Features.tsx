@@ -1,58 +1,148 @@
-import { Flower2, Sparkles, Asterisk } from "lucide-react";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const features = [
+const personas = [
   {
-    number: "01",
-    icon: Flower2,
-    title: ["Tender", "Audit"],
-    description: "Our algorithms are lush and evenly distributed, ensuring a bold, rich defense against inquiries.",
+    title: "The Productive Skeptic",
+    painPoint: "\"I use AI constantly but I'm not getting better—just faster at producing work that needs heavy editing.\"",
+    solution: "Stop guessing where AI helps. Lighthouse shows you exactly which parts of your workflow to automate and which need your real attention.",
   },
   {
-    number: "02",
-    icon: Sparkles,
-    title: ["Fiscal", "Flavor"],
-    description: "Deeply perturbing aromas of efficiency. We find deductions buried in the gristle of your ledger.",
+    title: "The Solo Optimizer",
+    painPoint: "\"I've streamlined what I can, but I have no idea if my workflows are actually good or just familiar.\"",
+    solution: "See your work patterns clearly. Discover inefficiencies you've gone blind to—like the 7-minute task that could take 2.",
   },
   {
-    number: "03",
-    icon: Asterisk,
-    title: ["Raw", "Speed"],
-    description: "Don't let the center stay velvety. We cook your books (legally) in seconds, not weeks.",
+    title: "The Distributed Team Lead",
+    painPoint: "\"My team says AI made them faster, but I can't see what's actually working across time zones.\"",
+    solution: "Get visibility into real workflows. See what your team actually does, share what works, and scale improvements without micromanaging.",
+  },
+  {
+    title: "The Privacy-Conscious Professional",
+    painPoint: "\"Every tool wants access to everything. I need real value before I let something watch how I work.\"",
+    solution: "Start with one workflow. Get a concrete win in your first session—then decide. All processing happens locally. Your data stays yours.",
   },
 ];
 
 const Features = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % personas.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + personas.length) % personas.length);
+  };
+
   return (
-    <section className="bg-background py-16 px-6 border-t border-border">
+    <section className="bg-background py-20 px-6 border-t border-border">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <div key={index} className="py-4">
-              <span className="label-feature mb-6 block">FEATURE {feature.number}</span>
-              
-              <feature.icon className="w-8 h-8 text-primary mb-6" strokeWidth={1.5} />
-              
-              <h3 className="text-3xl font-bold text-primary leading-tight mb-4">
-                {feature.title[0]}<br />
-                {feature.title[1]}
-              </h3>
-              
-              <p className="text-text-body leading-relaxed">
-                {feature.description}
-              </p>
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Built for people who want to get better at their work.
+          </h2>
+        </div>
+
+        {/* Carousel */}
+        <div className="relative">
+          {/* Cards Container */}
+          <div className="overflow-hidden">
+            <div 
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {personas.map((persona, index) => (
+                <div 
+                  key={index} 
+                  className="w-full flex-shrink-0 px-4 md:w-1/2 lg:w-1/3"
+                >
+                  <div className="bg-card rounded-xl border border-border p-8 h-full flex flex-col">
+                    {/* Persona Title */}
+                    <h3 className="text-2xl font-bold text-primary mb-6">
+                      {persona.title}
+                    </h3>
+                    
+                    {/* Pain Point */}
+                    <div className="mb-6">
+                      <p className="text-muted-foreground italic text-sm leading-relaxed">
+                        {persona.painPoint}
+                      </p>
+                    </div>
+                    
+                    {/* Solution */}
+                    <div className="mt-auto">
+                      <p className="text-text-body leading-relaxed">
+                        {persona.solution}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-          
-          {/* Grid pattern column with text */}
-          <div className="hidden lg:block relative min-h-[300px]">
-            <div className="absolute inset-0 grid-pattern border-l border-border" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <p className="text-3xl font-bold text-primary text-center leading-tight font-serif italic">
-                TRY A<br />
-                LITTLE<br />
-                CHAOS
-              </p>
+          </div>
+
+          {/* Desktop: Show all cards in grid */}
+          <div className="hidden lg:grid lg:grid-cols-4 gap-6 mt-0">
+            {personas.map((persona, index) => (
+              <div 
+                key={index} 
+                className="bg-card rounded-xl border border-border p-8 flex flex-col hover:border-primary/50 transition-colors"
+              >
+                {/* Persona Title */}
+                <h3 className="text-xl font-bold text-primary mb-4">
+                  {persona.title}
+                </h3>
+                
+                {/* Pain Point */}
+                <div className="mb-6">
+                  <p className="text-muted-foreground italic text-sm leading-relaxed">
+                    {persona.painPoint}
+                  </p>
+                </div>
+                
+                {/* Solution */}
+                <div className="mt-auto">
+                  <p className="text-text-body text-sm leading-relaxed">
+                    {persona.solution}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile Carousel Navigation */}
+          <div className="flex justify-center items-center gap-4 mt-8 lg:hidden">
+            <button
+              onClick={prevSlide}
+              className="p-2 rounded-full border border-border hover:bg-muted transition-colors"
+              aria-label="Previous persona"
+            >
+              <ChevronLeft className="w-5 h-5 text-primary" />
+            </button>
+            
+            {/* Dots */}
+            <div className="flex gap-2">
+              {personas.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    index === currentIndex ? 'bg-primary' : 'bg-muted-foreground/30'
+                  }`}
+                  aria-label={`Go to persona ${index + 1}`}
+                />
+              ))}
             </div>
+            
+            <button
+              onClick={nextSlide}
+              className="p-2 rounded-full border border-border hover:bg-muted transition-colors"
+              aria-label="Next persona"
+            >
+              <ChevronRight className="w-5 h-5 text-primary" />
+            </button>
           </div>
         </div>
       </div>
