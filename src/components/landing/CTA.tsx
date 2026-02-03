@@ -78,15 +78,29 @@ const CTA = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Left Column - Title */}
           <div>
-            <h2 className="text-5xl md:text-6xl font-bold text-primary leading-tight heading-italic mb-6">
-              Ready to<br />
-              start?
+            <h2 className="text-4xl md:text-5xl font-bold text-primary leading-tight mb-6">
+              Ready to transform<br />
+              how you work?
             </h2>
             
-            <p className="text-text-body leading-relaxed">
-              Join 40,000+ companies digesting their fiscal responsibilities with 
-              Theradyme.
+            <p className="text-text-body leading-relaxed mb-6">
+              Join Krama. Be among the first to experience:
             </p>
+            
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3 text-text-body">
+                <span className="text-accent font-bold">✓</span>
+                <span>Automatic workflow capture</span>
+              </li>
+              <li className="flex items-start gap-3 text-text-body">
+                <span className="text-accent font-bold">✓</span>
+                <span>Personalized insights to elevate your workflow with single click</span>
+              </li>
+              <li className="flex items-start gap-3 text-text-body">
+                <span className="text-accent font-bold">✓</span>
+                <span>Priority support & feature access</span>
+              </li>
+            </ul>
           </div>
           
           {/* Right Column - Form */}
