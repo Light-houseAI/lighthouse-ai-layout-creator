@@ -109,7 +109,7 @@ const WaitlistForm = () => {
         className="btn-primary w-full"
         disabled={isSubmitting}
       >
-        {isSubmitting ? 'JOINING...' : 'GET EARLY ACCESS'}
+        {isSubmitting ? 'Requesting...' : 'Request Early Access'}
       </button>
     </form>
   );
