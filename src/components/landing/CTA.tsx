@@ -80,7 +80,7 @@ const CTA = () => {
           <div>
             <h2 className="text-5xl md:text-6xl font-bold text-primary leading-tight heading-italic mb-6">
               Ready to<br />
-              Feast?
+              start?
             </h2>
             
             <p className="text-text-body leading-relaxed">

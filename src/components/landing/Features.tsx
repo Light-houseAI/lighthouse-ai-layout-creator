@@ -2,7 +2,7 @@ const personas = [
   {
     title: "The Productive Skeptic",
     painPoint: "\"I use AI constantly but I'm not getting better—just faster at producing work that needs heavy editing.\"",
-    solution: "Stop guessing where AI helps. Lighthouse shows you exactly which parts of your workflow to automate and which need your real attention.",
+    solution: "Stop guessing where AI helps. Krama shows you exactly which parts of your workflow to automate and which need your real attention.",
   },
   {
     title: "The Solo Optimizer",

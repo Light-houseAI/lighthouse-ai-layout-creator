@@ -10,7 +10,7 @@ const useCases = [
     id: "capture",
     title: "Capture",
     headline: "Capture",
-    description: "Lighthouse runs quietly in the background, recording your workflow across the apps you choose.",
+    description: "Krama runs quietly in the background, recording your workflow across the apps you choose.",
   },
   {
     id: "analyze",
@@ -310,8 +310,8 @@ const UseCases = () => {
                     {/* App header */}
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-2">
-                        <img src={lighthouseLogo} alt="Lighthouse" className="w-6 h-6" />
-                        <span className="text-sm font-medium text-primary">Lighthouse AI</span>
+                        <img src={lighthouseLogo} alt="Krama" className="w-6 h-6" />
+                        <span className="text-sm font-medium text-primary">Krama</span>
                       </div>
                       <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center">
                         <span className="text-[10px]">👤</span>
@@ -331,7 +331,7 @@ const UseCases = () => {
                     {/* Track item */}
                     <div className="flex items-center justify-between bg-muted/50 rounded-lg p-3 relative">
                       <div>
-                        <p className="text-sm font-medium text-primary">Lighthouse</p>
+                        <p className="text-sm font-medium text-primary">Krama</p>
                         <p className="text-xs text-text-body">
                           Last worked: 1 hour ago • <span className="text-accent">2 sessions to review</span>
                         </p>
