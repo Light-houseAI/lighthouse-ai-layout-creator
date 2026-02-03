@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Layers, MousePointer2 } from "lucide-react";
 import lighthouseLogo from "@/assets/lighthouse-logo.png";
+import AnalyzeAnimation from "./AnalyzeAnimation";
 
 const useCases = [
   {
@@ -430,6 +431,8 @@ const UseCases = () => {
                   </div>
                 </div>
               </>
+            ) : activeCase === 'analyze' ? (
+              <AnalyzeAnimation isActive={activeCase === 'analyze'} />
             ) : (
               /* Placeholder for other tabs */
               <div className="absolute inset-0 flex items-center justify-center">
