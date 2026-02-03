@@ -39,37 +39,37 @@ const OptimizeAnimation = ({ isActive }: OptimizeAnimationProps) => {
       return;
     }
 
-    // Start animation sequence - extended to 10 seconds total
+    // Start animation sequence
     setPhase('analyzing');
     setProgress(0);
 
-    // Animate progress from 0 to 100 over 3 seconds
+    // Animate progress from 0 to 100 over 1.5 seconds
     const progressInterval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           return 100;
         }
-        return prev + 1.7; // Slower increment for 3s duration
+        return prev + 4;
       });
     }, 50);
 
-    // Transition to cards phase at 3s
+    // Transition to cards phase at 1.5s
     const cardsTimer = setTimeout(() => {
       setPhase('cards');
       clearInterval(progressInterval);
       setProgress(100);
-    }, 3000);
+    }, 1500);
 
-    // Stagger card reveals with more breathing room
-    const card1Timer = setTimeout(() => setVisibleCards([0]), 3500);
-    const card2Timer = setTimeout(() => setVisibleCards([0, 1]), 4500);
-    const card3Timer = setTimeout(() => setVisibleCards([0, 1, 2]), 5500);
+    // Stagger card reveals
+    const card1Timer = setTimeout(() => setVisibleCards([0]), 1600);
+    const card2Timer = setTimeout(() => setVisibleCards([0, 1]), 2000);
+    const card3Timer = setTimeout(() => setVisibleCards([0, 1, 2]), 2400);
 
-    // Complete phase at 7s, cards settle until 10s
+    // Complete phase
     const completeTimer = setTimeout(() => {
       setPhase('complete');
-    }, 7000);
+    }, 3000);
 
     return () => {
       clearInterval(progressInterval);

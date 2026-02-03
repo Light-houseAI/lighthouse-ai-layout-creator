@@ -187,17 +187,15 @@ const UseCases = () => {
   const [visibleIcons, setVisibleIcons] = useState<number[]>([]);
   const activeData = useCases.find((uc) => uc.id === activeCase)!;
 
-  // Auto-advance through tabs - longer duration for Optimize
+  // Auto-advance through tabs
   useEffect(() => {
-    const duration = activeCase === 'optimize' ? 10000 : 5000;
-    
     const interval = setInterval(() => {
       setActiveCase(current => {
         const currentIndex = useCases.findIndex(uc => uc.id === current);
         const nextIndex = (currentIndex + 1) % useCases.length;
         return useCases[nextIndex].id;
       });
-    }, duration);
+    }, 5000); // Switch every 5 seconds
 
     return () => clearInterval(interval);
   }, []);
