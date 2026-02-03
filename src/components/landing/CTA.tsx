@@ -127,7 +127,7 @@ const CTA = () => {
                   className="btn-primary w-full mt-8"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'JOINING...' : 'GET EARLY ACCESS'}
+                  {isSubmitting ? 'Requesting...' : 'Request Early Access'}
                 </button>
               </form>
             )}
