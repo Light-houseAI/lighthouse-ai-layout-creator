@@ -3,6 +3,7 @@ import { Layers, MousePointer2 } from "lucide-react";
 import lighthouseLogo from "@/assets/lighthouse-logo.png";
 import AnalyzeAnimation from "./AnalyzeAnimation";
 import OptimizeAnimation from "./OptimizeAnimation";
+import ExecuteAnimation from "./ExecuteAnimation";
 
 const useCases = [
   {
@@ -437,15 +438,7 @@ const UseCases = () => {
             ) : activeCase === 'optimize' ? (
               <OptimizeAnimation isActive={activeCase === 'optimize'} />
             ) : (
-              /* Placeholder for Execute tab */
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-muted-foreground">
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-2xl bg-muted/50 flex items-center justify-center">
-                    <Layers className="w-10 h-10 text-muted-foreground/50" />
-                  </div>
-                  <p className="text-sm">{activeData.headline} visualization</p>
-                </div>
-              </div>
+              <ExecuteAnimation isActive={activeCase === 'execute'} />
             )}
           </div>
         </div>
