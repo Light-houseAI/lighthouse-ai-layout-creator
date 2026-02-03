@@ -17,8 +17,12 @@ const Hero = () => {
               understood.
             </h1>
             
-            <p className="text-lg text-text-body max-w-md mb-10 leading-relaxed">
+            <p className="text-lg text-text-body max-w-md mb-6 leading-relaxed">
               Insights that help you spot inefficiencies, automate busywork, and do your best work—every time.
+            </p>
+            
+            <p className="text-sm text-accent font-medium mb-6">
+              We're onboarding early users now. Request access to be in the first cohort.
             </p>
             
             <WaitlistForm />
