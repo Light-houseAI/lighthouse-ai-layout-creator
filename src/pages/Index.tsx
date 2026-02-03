@@ -1,7 +1,7 @@
 import TopBanner from "@/components/landing/TopBanner";
 import Header from "@/components/landing/Header";
 import Hero from "@/components/landing/Hero";
-import Features from "@/components/landing/Features";
+import ProcessVisualization from "@/components/landing/ProcessVisualization";
 import HowToPrepare from "@/components/landing/HowToPrepare";
 import CTA from "@/components/landing/CTA";
 import Footer from "@/components/landing/Footer";
@@ -12,7 +12,7 @@ const Index = () => {
       <TopBanner />
       <Header />
       <Hero />
-      <Features />
+      <ProcessVisualization />
       <HowToPrepare />
       <CTA />
       <Footer />
