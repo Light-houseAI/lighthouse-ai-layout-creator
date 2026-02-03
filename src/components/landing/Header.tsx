@@ -9,10 +9,10 @@ const Header = () => {
           <img 
             src={lighthouseLogo} 
             alt="Krama" 
-            className="w-6 h-6 rounded-full"
+            className="w-8 h-8 rounded-full"
           />
           <span 
-            className="text-lg font-semibold bg-clip-text text-transparent"
+            className="text-2xl font-bold bg-clip-text text-transparent"
             style={{ backgroundImage: 'linear-gradient(135deg, hsl(160 35% 50%) 0%, hsl(200 30% 60%) 40%, hsl(260 35% 60%) 100%)' }}
           >
             Krama
@@ -20,13 +20,7 @@ const Header = () => {
         </div>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-6">
-          <a 
-            href="#login" 
-            className="text-sm text-foreground hover:text-primary transition-colors"
-          >
-            Log in
-          </a>
+        <div className="flex items-center">
           <a 
             href="#request-access" 
             className="text-sm text-primary border border-primary rounded-md px-4 py-2 hover:bg-primary/10 transition-colors"
