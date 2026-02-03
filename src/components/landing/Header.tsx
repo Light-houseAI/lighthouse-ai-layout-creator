@@ -1,4 +1,3 @@
-import { ChevronDown } from "lucide-react";
 import lighthouseLogo from "@/assets/lighthouse-logo.png";
 
 const Header = () => {
@@ -19,35 +18,9 @@ const Header = () => {
             Lighthouse
           </span>
         </div>
-        
-        {/* Center Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          <button className="flex items-center gap-1 text-sm text-foreground hover:text-primary transition-colors">
-            Audiences
-            <ChevronDown className="w-4 h-4" />
-          </button>
-          <a 
-            href="#shortcuts" 
-            className="text-sm text-foreground hover:text-primary transition-colors"
-          >
-            Shortcuts
-          </a>
-          <a 
-            href="#templates" 
-            className="text-sm text-foreground hover:text-primary transition-colors"
-          >
-            Templates
-          </a>
-          <a 
-            href="#whats-new" 
-            className="text-sm text-foreground hover:text-primary transition-colors"
-          >
-            What's New
-          </a>
-        </nav>
 
         {/* Right Actions */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="flex items-center gap-6">
           <a 
             href="#login" 
             className="text-sm text-foreground hover:text-primary transition-colors"
