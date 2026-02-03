@@ -13,9 +13,9 @@ const Hero = () => {
             </div>
             
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary leading-[0.9] mb-8">
-              MAKE<br />
-              WORK<br />
-              FLOW.
+              UNLOCK<br />
+              YOUR<br />
+              BEST.
             </h1>
             
             <p className="text-lg text-text-body max-w-md mb-10 leading-relaxed">
