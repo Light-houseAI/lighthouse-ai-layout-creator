@@ -10,25 +10,25 @@ const useCases = [
     id: "capture",
     title: "Capture",
     headline: "Capture",
-    description: "Krama runs quietly in the background, recording your workflow across the apps you choose.",
+    description: "Runs on your device. Captures what apps you use and how you move between them. No screenshots. No recordings. No audio. A blue dot in your menu bar shows when it's active—you're always in control.",
   },
   {
     id: "analyze",
     title: "Analyze",
     headline: "Analyze",
-    description: "We classify what you were trying to do, how you did it, and where time went.",
+    description: "Classifies what you were trying to do, how you did it, and where time went. All AI processing happens on-device—your workflow data never leaves your machine unless you choose to share it.",
   },
   {
     id: "optimize",
     title: "Optimize",
     headline: "Optimize",
-    description: "Get specific recommendations: shortcuts, automations, better approaches—tailored to your actual workflow.",
+    description: "Compares your workflow against your team's best performers. Surfaces specific, actionable recommendations: 'You checked availability in a spreadsheet, then went to the scheduler which already has availability. Skipping the spreadsheet saves 3 min/alert.'",
   },
   {
     id: "execute",
     title: "Execute",
     headline: "Execute",
-    description: "Step-by-step guidance to implement changes. Share workflows with your team. Keep improving.",
+    description: "Turn recommendations into shareable skill files and AI agents. Your team's best practices become everyone's starting point—not a document they'll never read, but active guidance that shows up when it matters.",
   },
 ];
 
@@ -248,7 +248,7 @@ const UseCases = () => {
   }, [activeCase]);
 
   return (
-    <section className="bg-background py-20 px-6">
+    <section id="how-it-works" className="bg-background py-20 px-6">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left Column - Content */}

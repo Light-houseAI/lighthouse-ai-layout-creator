@@ -1,23 +1,23 @@
 const personas = [
   {
-    title: "The Productive Skeptic",
-    painPoint: "\"I use AI constantly but I'm not getting better—just faster at producing work that needs heavy editing.\"",
-    solution: "Stop guessing where AI helps. Krama shows you exactly which parts of your workflow to automate and which need your real attention.",
+    title: "The Ops Leader Who Can't See Below the Queue",
+    painPoint: "\"I know tasks are getting done, but I have no idea how. When someone leaves, the knowledge walks out with them.\"",
+    solution: "Krama gives you task-level visibility into how work actually happens—not just what got completed, but how your best people do it differently.",
   },
   {
-    title: "The Solo Optimizer",
-    painPoint: "\"I've streamlined what I can, but I have no idea if my workflows are actually good or just familiar.\"",
-    solution: "See your work patterns clearly. Discover inefficiencies you've gone blind to—like the 7-minute task that could take 2.",
+    title: "The New Hire Drowning in Shadowing",
+    painPoint: "\"I've been here three weeks and I'm still waiting for someone to show me how they actually do this job.\"",
+    solution: "Turn your team's tribal knowledge into shareable skill files. New hires learn from real workflows, not outdated docs nobody maintains.",
   },
   {
-    title: "The Distributed Team Lead",
-    painPoint: "\"My team says AI made them faster, but I can't see what's actually working across time zones.\"",
-    solution: "Get visibility into real workflows. See what your team actually does, share what works, and scale improvements without micromanaging.",
+    title: "The Team Already Using AI—Badly",
+    painPoint: "\"Everyone's using ChatGPT for everything, but half the output needs to be redone. I can't tell what's helping and what's waste.\"",
+    solution: "See exactly where AI helps and where it hurts. Krama shows which AI-assisted steps actually save time—and which ones create rework.",
   },
   {
-    title: "The Privacy-Conscious Professional",
-    painPoint: "\"Every tool wants access to everything. I need real value before I let something watch how I work.\"",
-    solution: "Start with one workflow. Get a concrete win in your first session—then decide. All processing happens locally. Your data stays yours.",
+    title: "The Privacy-First Enterprise",
+    painPoint: "\"We can't send workflow data to another cloud. Compliance won't even let us have the conversation.\"",
+    solution: "All processing happens on-device. Your workflow data never leaves your machine unless you choose to share it. No screenshots, no recordings, no audio.",
   },
 ];
 
@@ -29,7 +29,7 @@ const Features = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Built for people who want to get better at their work.
+            Built for the people doing the work—and the leaders scaling it.
           </h2>
         </div>
 

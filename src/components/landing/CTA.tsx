@@ -79,8 +79,7 @@ const CTA = () => {
           {/* Left Column - Title */}
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-primary leading-tight mb-6">
-              Ready to transform<br />
-              how you work?
+              See how your team actually works—and what your best people do differently.
             </h2>
             
             <p className="text-text-body leading-relaxed mb-6">
@@ -90,15 +89,15 @@ const CTA = () => {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-text-body">
                 <span className="text-accent font-bold">✓</span>
-                <span>Automatic workflow capture</span>
+                <span>Automatic workflow capture across every tool</span>
               </li>
               <li className="flex items-start gap-3 text-text-body">
                 <span className="text-accent font-bold">✓</span>
-                <span>Personalized insights to elevate your workflow with single click</span>
+                <span>AI insights grounded in what actually happened, not what someone remembers</span>
               </li>
               <li className="flex items-start gap-3 text-text-body">
                 <span className="text-accent font-bold">✓</span>
-                <span>Priority support & feature access</span>
+                <span>On-device processing—your data stays yours</span>
               </li>
             </ul>
           </div>
