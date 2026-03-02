@@ -9,7 +9,7 @@ const Hero = () => {
           {/* Left Content */}
           <div className="py-16">
             <div className="inline-block border border-primary px-3 py-1 mb-8">
-              <span className="label-feature">AI-POWERED WORKSPACE</span>
+              <span className="label-feature">WORKFLOW INTELLIGENCE</span>
             </div>
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary leading-[1] mb-8">
@@ -18,7 +18,7 @@ const Hero = () => {
             </h1>
             
             <p className="text-lg text-text-body max-w-md mb-6 leading-relaxed">
-              Insights that help you spot inefficiencies, automate busywork, and do your best work—every time.
+              Krama captures how work actually happens—across every app in your workflow—then turns that invisible knowledge into actionable insights, shareable skill files, and AI agents that work because they've seen what you do.
             </p>
             
             <p className="text-sm text-accent font-medium mb-6">
@@ -26,6 +26,13 @@ const Hero = () => {
             </p>
             
             <WaitlistForm />
+            
+            <a 
+              href="#how-it-works" 
+              className="inline-block mt-4 text-sm text-accent hover:text-accent/80 transition-colors underline underline-offset-4"
+            >
+              See how it works →
+            </a>
           </div>
           
           {/* Right Content - Workflow Comparison Animation */}
